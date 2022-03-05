@@ -1,16 +1,13 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from PIL import Image
+from numpy import*
 
-Mat_sh = np.mat(pd.read_csv('mat_schet.csv',
-                            delimiter=";",
-                            header=None))
-Mat_vs = np.mat(pd.read_csv('mat_vesov .csv',
-                            delimiter=";",
-                            header=None))
+for i in range(1, 10):
+    temp = asarray(Image.open('%d.png' %i))
 
-Mat_vs_cr = Mat_sh*Mat_vs.T
-plt.imshow(Mat_vs_cr)
+plt.imshow(temp*10)
 
 plt.show()
 
