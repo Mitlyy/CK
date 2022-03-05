@@ -28,10 +28,7 @@ ox = np.arange(i)
 print(oy)
 plt.plot(ox, oy)
 
-flip = np.flip(v, axis=1)
-g = np.dot(x, flip)
-print(g)
-print(np.shape(g))
-plt.scatter(np.array(g[:, 0]), np.array(g[:, 1]))
+g = x*v
+plt.scatter(np.array(g[:, 1]), np.array(g[:, 2]))
 plt.show()
 
