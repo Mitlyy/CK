@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-report1 = pd.read_csv('2.csv', header=None)
+report1 = pd.read_csv('14_16.csv', header=None)
 print(report1)
 d = report1.median()
 print(d)
