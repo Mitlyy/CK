@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 Mat_sh = np.mat(pd.read_csv('mat_schet.csv',
                             delimiter=";",
                             header=None))
-Mat_vs = np.mat(pd.read_csv('mat_vesov.csv',
+Mat_vs = np.mat(pd.read_csv('mat_vesov .csv',
                             delimiter=";",
                             header=None))
 
