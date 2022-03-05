@@ -6,12 +6,14 @@ from numpy import *
 
 
 d = []
-for i in range(1, 5):
+for i in range(1, 10):
+    Icc =
     temp = Image.open('Masks/%d.png' % i)
     img = temp.convert('L')
     img = asarray(img)
-    print(img+1000)
+    BI = B* I
+    img += img
+
 
 plt.imshow(img)
-
 plt.show()
