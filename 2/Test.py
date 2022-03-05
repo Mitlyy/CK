@@ -4,16 +4,34 @@ import matplotlib.pyplot as plt
 
 report1 = pd.read_csv('14_16.csv', header=None)
 print(report1)
-d = report1.median()
-print(d)
-i = 0
-while i < len(report1.columns):
-    report1[i] = report1[i] - int(d.loc[i])
-    i += 1
+report1 = np.mat(report1)
 print(report1)
-x = np.mat(report1)
-print(x)
-z = (1/len(report1)) * (x.T*x)
+d = report1.mean(axis=0)
+print('VOT D', d)
+report1 = report1 - d
+x = report1
+z = (1 / len(report1)) * (x.T * x)
+print(z)
 w, v = np.linalg.eig(z)
+print("Долевая дисперсия:", (w[0] + w[1]) / sum(w[0:]), "\n"
+      "vectors:", w, '\n'
+      "Max vector:", max(w), "\n"
+      "Вектор в новых координатах:", (report1 * v.T[1].T)[0])
 
+sort = sorted(w, reverse=True)
+i = 0
+oy = []
+while i <= 10:
+    oy = np.append(oy, (sum(sort[0:i]) / sum(sort[0:])))
+    i += 1
+ox = np.arange(i)
+print(oy)
+plt.plot(ox, oy)
+
+flip = np.flip(v, axis=1)
+g = np.dot(x, flip)
+print(g)
+print(np.shape(g))
+plt.scatter(np.array(g[:, 0]), np.array(g[:, 1]))
+plt.show()
 
