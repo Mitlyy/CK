@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 from numpy import *
-from scikitimage import rgb2gray
+
 
 
 # def scale(X, x_min, x_max):
@@ -21,13 +21,13 @@ G = 0
 img_0 = np.zeros([128, 128])
 img_2 = np.zeros([128, 128])
 for i in range(2, 700):
-    temp = Image.open('Masks/%d.png' % i)
-    img = rgb2gray(temp)
+    temp = Image.open('%d.png' % i)
+    img = temp.convert('L')
     img = asarray(img)
     img_0 += img
     G += B_0[i-2, 1]
     img_2 += img*B_0[i-2, 1]
 
-plt.imshow(img)
+plt.imshow((img_2/i)-(1/i * G * 1/i * img_0))
 plt.show()
 
