@@ -21,8 +21,8 @@ G = 0
 img_0 = np.zeros([128, 128])
 img_2 = np.zeros([128, 128])
 for i in range(2, 700):
-    temp = Image.open('%d.png' % i)
-    img = temp.convert('L')
+    temp = Image.open('Masks/%d.png' % i)
+    img = temp.convert('1')
     img = asarray(img)
     img_0 += img
     G += B_0[i-2, 1]

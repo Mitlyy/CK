@@ -5,8 +5,8 @@ from PIL import Image
 from numpy import *
 
 
-temp = Image.open('%d.png' % 2)
-img_1 = temp.convert('L')
+temp = Image.open('Masks/%d.png' % 2)
+img_1 = temp.convert('1')
 img_1 = asarray(img_1)
 temp = Image.open('Dva.png').convert('L')
 img_2 = temp.convert('L')
