@@ -3,17 +3,31 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 from numpy import *
+from scikitimage import rgb2gray
 
 
-d = []
-for i in range(1, 10):
-    Icc =
+# def scale(X, x_min, x_max):
+#     nom = (X-X.min(axis=0))*(x_max-x_min)
+#     denom = X.max(axis=0) - X.min(axis=0)
+#     denom[denom==0] = 1
+#     return x_min + nom/denom
+
+
+B_0 = np.mat(pd.read_csv('13_30 - 16_50.csv',
+                                delimiter=";",
+                                header=None))
+
+G = 0
+img_0 = np.zeros([128, 128])
+img_2 = np.zeros([128, 128])
+for i in range(2, 700):
     temp = Image.open('Masks/%d.png' % i)
-    img = temp.convert('L')
+    img = rgb2gray(temp)
     img = asarray(img)
-    BI = B* I
-    img += img
-
+    img_0 += img
+    G += B_0[i-2, 1]
+    img_2 += img*B_0[i-2, 1]
 
 plt.imshow(img)
 plt.show()
+
